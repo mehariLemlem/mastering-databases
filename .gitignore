@@ -1,0 +1,229 @@
+# =============================================================
+# .gitignore: Python / Jupyter / PySpark / dbt / Microsoft Fabric
+# =============================================================
+
+# -------------------------------------------------------------
+# Secrets and credentials (NEVER commit these)
+# -------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cer
+*.jks
+*.keystore
+secrets.json
+secrets.yml
+secrets.yaml
+*.secret
+*.secrets
+credentials.json
+client_secret*.json
+service-account*.json
+local.settings.json
+appsettings.Development.json
+appsettings.Local.json
+*.publishsettings
+# dbt connection profiles (contain credentials); keep a profiles.yml.example instead
+profiles.yml
+!profiles.yml.example
+# Terraform state can contain secrets
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+!*.tfvars.example
+
+# -------------------------------------------------------------
+# Python
+# -------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+develop-eggs/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+pyvenv.cfg
+
+# Test, coverage, and type-checker caches
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.hypothesis/
+.mypy_cache/
+.dmypy.json
+.pyre/
+.ruff_cache/
+.pytype/
+cython_debug/
+
+# -------------------------------------------------------------
+# Jupyter notebooks
+# -------------------------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+.virtual_documents/
+# Tip: notebook OUTPUT can leak data. Strip it with nbstripout (see README note).
+
+# -------------------------------------------------------------
+# PySpark / local Spark / Delta
+# -------------------------------------------------------------
+spark-warehouse/
+metastore_db/
+derby.log
+.spark-*/
+*.crc
+_SUCCESS
+checkpoint/
+checkpoints/
+
+# -------------------------------------------------------------
+# dbt
+# -------------------------------------------------------------
+target/
+dbt_packages/
+dbt_modules/
+logs/
+.user.yml
+.dbt/
+package-lock.yml
+
+# -------------------------------------------------------------
+# Data files (keep data out of Git; use OneLake / ADLS / Git LFS)
+# -------------------------------------------------------------
+data/
+*.parquet
+*.avro
+*.orc
+*.delta
+*.bak
+*.bacpac
+*.mdf
+*.ldf
+*.ndf
+*.sqlite
+*.sqlite3
+*.db
+# Synthetic/sample data generators (e.g., Synthea output)
+output/csv/
+output/fhir/
+# Uncomment if you do NOT want any CSV/Excel files tracked:
+# *.csv
+# *.xlsx
+# *.xls
+
+# Large archives and exports
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.rar
+
+# -------------------------------------------------------------
+# Microsoft Fabric / Azure / Power BI
+# -------------------------------------------------------------
+# NOTE: Fabric Git integration commits item folders (*.Notebook, *.Lakehouse,
+# *.DataPipeline, *.SemanticModel, *.Report, *.VariableLibrary) and their
+# .platform files. Do NOT ignore those.
+.pbi/
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.pbix.bak
+*.pbit.bak
+.azure/
+.azurefunctions/
+azure-pipelines.local.yml
+.fabric-cicd/
+*.dacpac
+
+# -------------------------------------------------------------
+# SQL tooling (SSMS / Azure Data Studio / SSDT / Redgate)
+# -------------------------------------------------------------
+*.suo
+*.user
+*.dbmdl
+*.jfm
+*.sqlproj.user
+*.rgm
+*.sqlauthor
+*.rglm
+
+# -------------------------------------------------------------
+# Editors and IDEs
+# -------------------------------------------------------------
+# VS Code: keep shared team settings, ignore personal ones
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+*.code-workspace
+.history/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# -------------------------------------------------------------
+# Operating system files
+# -------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# -------------------------------------------------------------
+# Logs, temp, and local scratch files
+# -------------------------------------------------------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+tmp/
+temp/
+scratch/
+.cache/
